@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - Stirling Schools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004124', <!-- #1E40AF -->
+                        secondary: '#d7df23',
+                        accent: '#1a9c8f',
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        html { scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(30, 64, 175, 0.95)); }
+        .scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+        .profile-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .profile-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="font-sans text-dark bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="text-2xl font-bold text-primary">Stirling<span class="text-accent">Schools</span></div>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 font-medium hover:text-primary transition-colors">About Us</a>
+                    <a href="academics.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Academics</a>
+                    <a href="admissions.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Admissions</a>
+                    <div class="relative group">
+                        <a href="student-life.html" class="text-primary font-medium hover:text-accent transition-colors">Student Life</a>
+                        <div class="hidden group-hover:block absolute left-0 w-48 bg-white shadow-lg py-2 rounded-md mt-1 z-50">
+                            <a href="student-life.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Overview</a>
+                            <a href="student-profile.html" class="block px-4 py-2 text-sm text-primary bg-blue-50">Student Profile</a>
+                            <a href="character-education.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Character Education</a>
+                            <a href="activities.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Activities</a>
+                            <a href="student-clubs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Clubs</a>
+                        </div>
+                    </div>
+                    <a href="community.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Community</a>
+                    <a href="contact.html" class="bg-primary text-white rounded-md px-4 py-2 hover:bg-blue-600 transition-colors">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:dden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">About Us</a>
+                <a href="academics.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Admissions</a>
+                <span class="block px-3 py-2 text-gray-500 font-medium text-sm">Student Life</span>
+                <a href="student-life.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Overview</a>
+                <a href="student-profile.html" class="block pl-6 pr-3 py-2 text-primary font-medium rounded-md bg-blue-50">Student Profile</a>
+                <a href="character-education.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Character Education</a>
+                <a href="activities.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Activities</a>
+                <a href="student-clubs.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Clubs</a>
+                <a href="community.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Community</a>
+                <a href="contact.html" class="block px-3 py-2 text-white bg-primary font-medium rounded-md hover:bg-blue-600 mt-2">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="relative bg-gray-900">
+        <div class="absolute inset-0">
+            <img src="https://source.unsplash.com/random/1600x900?diverse-students,portrait-group" alt="Meet Our Students" class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 hero-gradient mix-blend-multiply"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">Meet Our Students</h1>
+            <p class="mt-6 max-w-3xl text-xl text-gray-100">A diverse, vibrant, and engaged community of learners shaping the future.</p>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl font-bold text-primary">A Tapestry of Talents</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Stirling Schools are home to a multinational and multilingual student body, reflecting a rich tapestry of cultures, backgrounds, and perspectives. Our students are curious, engaged, and respectful individuals who are eager to learn and make a positive impact on the world.
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        We cultivate an environment where every student feels valued, supported, and empowered to reach their full potential.
+                    </p>
+                </div>
+                <div class="mt-12 lg:mt-0 scroll-reveal">
+                    <img src="https://source.unsplash.com/random/600x400?students-laughing,group" alt="Diverse students smiling" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Students Are Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary scroll-reveal">Our Students Are...</h2>
+            </div>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="profile-card bg-white p-6 rounded-lg shadow-lg text-center scroll-reveal">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-globe-americas"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Globally Minded</h3>
+                    <p class="text-gray-600">They appreciate cultural diversity, develop international perspectives, and are prepared to be citizens of the world.</p>
+                </div>
+                <div class="profile-card bg-white p-6 rounded-lg shadow-lg text-center scroll-reveal" style="transition-delay: 0.1s;">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Academically Driven</h3>
+                    <p class="text-gray-600">Passionate about learning, they are critical thinkers, problem solvers, and lifelong learners.</p>
+                </div>
+                <div class="profile-card bg-white p-6 rounded-lg shadow-lg text-center scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-users"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Community Focused</h3>
+                    <p class="text-gray-600">Actively involved in school life and service initiatives, demonstrating empathy and a commitment to helping others.</p>
+                </div>
+                <div class="profile-card bg-white p-6 rounded-lg shadow-lg text-center scroll-reveal" style="transition-delay: 0.3s;">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-paint-brush"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Creative & Innovative</h3>
+                    <p class="text-gray-600">Encouraged to explore their artistic, technological, and entrepreneurial talents, thinking outside the box.</p>
+                </div>
+                <div class="profile-card bg-white p-6 rounded-lg shadow-lg text-center scroll-reveal" style="transition-delay: 0.4s;">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Resilient & Adaptable</h3>
+                    <p class="text-gray-600">Equipped with the skills and mindset to navigate challenges, learn from experiences, and thrive in a changing world.</p>
+                </div>
+                <div class="profile-card bg-white p-6 rounded-lg shadow-lg text-center scroll-reveal" style="transition-delay: 0.5s;">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-comments"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Effective Communicators</h3>
+                    <p class="text-gray-600">Developing strong verbal, written, and interpersonal skills to express ideas clearly and collaborate effectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Spotlights/Journey Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary scroll-reveal">The Stirling Student Journey</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 scroll-reveal">From foundational learning to advanced studies, our students grow and excel at every stage.</p>
+            </div>
+            <div class="space-y-12">
+                <!-- Primary Student -->
+                <div class="lg:flex lg:items-center scroll-reveal">
+                    <div class="lg:w-1/3">
+                        <img src="https://source.unsplash.com/random/300x200?young-student,happy,learning" alt="Primary Student" class="rounded-lg shadow-lg mx-auto">
+                    </div>
+                    <div class="mt-6 lg:mt-0 lg:ml-8 lg:w-2/3">
+                        <h3 class="text-2xl font-semibold text-primary">The Curious Explorer (Primary Years)</h3>
+                        <p class="mt-2 text-gray-600">Our primary students are full of wonder and excitement. They develop foundational literacy and numeracy skills, explore science and arts, and learn the importance of friendship and cooperation in a nurturing environment. Play-based learning and interactive activities spark their curiosity and love for discovery.</p>
+                    </div>
+                </div>
+                <!-- Secondary Student -->
+                <div class="lg:flex lg:items-center lg:flex-row-reverse scroll-reveal">
+                    <div class="lg:w-1/3">
+                        <img src="https://source.unsplash.com/random/300x200?teen-student,studying,group" alt="Secondary Student" class="rounded-lg shadow-lg mx-auto">
+                    </div>
+                    <div class="mt-6 lg:mt-0 lg:mr-8 lg:w-2/3">
+                        <h3 class="text-2xl font-semibold text-primary">The Developing Scholar (Secondary Years)</h3>
+                        <p class="mt-2 text-gray-600">As they transition into secondary school, students deepen their subject knowledge, hone critical thinking skills, and begin to explore specialized interests through a wider range of academic and extracurricular options. They develop greater independence and take on more responsibility in their learning and community involvement.</p>
+                    </div>
+                </div>
+                <!-- High School Student -->
+                <div class="lg:flex lg:items-center scroll-reveal">
+                    <div class="lg:w-1/3">
+                        <img src="https://source.unsplash.com/random/300x200?high-school-student,graduation,achieve" alt="High School Student" class="rounded-lg shadow-lg mx-auto">
+                    </div>
+                    <div class="mt-6 lg:mt-0 lg:ml-8 lg:w-2/3">
+                        <h3 class="text-2xl font-semibold text-primary">The Aspiring Leader (High School Years)</h3>
+                        <p class="mt-2 text-gray-600">Our high school students prepare for university and future careers. They engage in rigorous academic programs, take on leadership roles, and benefit from specialized guidance for university applications and standardized tests. They graduate as confident, capable, and globally-aware young adults ready for the next chapter.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes a Stirling Student Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-primary scroll-reveal">What Defines a Stirling Student?</h2>
+            <p class="mt-4 text-xl text-gray-600 scroll-reveal">
+                Beyond academic achievements, Stirling students are characterized by their strong values, their commitment to personal growth, and their desire to contribute meaningfully to the world. They embrace challenges, celebrate diversity, and embody the spirit of lifelong learning.
+            </p>
+            <div class="mt-8 scroll-reveal">
+                <a href="character-education.html" class="inline-block bg-primary text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+                    Learn About Our Character Education
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">About</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="about.html#mission" class="text-base text-gray-400 hover:text-white">Mission & Vision</a></li>
+                        <li><a href="about.html#schools" class="text-base text-gray-400 hover:text-white">Our Schools</a></li>
+                        <li><a href="about.html#accreditations" class="text-base text-gray-400 hover:text-white">Accreditations</a></li>
+                        <li><a href="about.html#unesco" class="text-base text-gray-400 hover:text-white">UNESCO Action Plan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Academics</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="academics.html#education-model" class="text-base text-gray-400 hover:text-white">Our Education Model</a></li>
+                        <li><a href="academics.html#curriculum" class="text-base text-gray-400 hover:text-white">Curriculum</a></li>
+                        <li><a href="academics.html#english-language" class="text-base text-gray-400 hover:text-white">English Language Teaching</a></li>
+                        <li><a href="academics.html#special-programs" class="text-base text-gray-400 hover:text-white">Special Programs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Student Life</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="student-life.html" class="text-base text-gray-400 hover:text-white">Overview</a></li>
+                        <li><a href="student-profile.html" class="text-base text-white font-semibold">Student Profile</a></li>
+                        <li><a href="character-education.html" class="text-base text-gray-400 hover:text-white">Character Education</a></li>
+                        <li><a href="activities.html" class="text-base text-gray-400 hover:text-white">Activities</a></li>
+                        <li><a href="student-clubs.html" class="text-base text-gray-400 hover:text-white">Student Clubs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Connect</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="community.html" class="text-base text-gray-400 hover:text-white">Community</a></li>
+                        <li><a href="admissions.html" class="text-base text-gray-400 hover:text-white">Admissions</a></li>
+                        <li><a href="contact.html#careers" class="text-base text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="contact.html" class="text-base text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div><p class="text-base text-gray-400 text-center md:text-left">&copy; 2024 Stirling Schools. All rights reserved.</p></div>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            const revealOnScroll = function() {
+                for (let i = 0; i < scrollRevealElements.length; i++) {
+                    const elementTop = scrollRevealElements[i].getBoundingClientRect().top;
+                    if (elementTop < window.innerHeight - 100) {
+                        scrollRevealElements[i].classList.add('active');
+                    }
+                }
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>

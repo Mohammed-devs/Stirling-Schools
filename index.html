@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stirling Schools - Reimagining Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004124', <!-- #1E40AF -->
+                        secondary: '#d7df23',
+                        accent: '#1a9c8f',
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(30, 64, 175, 0.95));
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="text-2xl font-bold text-primary">Stirling<span class="text-accent">Schools</span></div>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-primary font-medium hover:text-accent transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 font-medium hover:text-primary transition-colors">About Us</a>
+                    <a href="academics.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Academics</a>
+                    <a href="admissions.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Admissions</a>
+                    <div class="relative group">
+                        <a href="#" class="text-gray-700 font-medium hover:text-primary transition-colors">Student Life</a>
+                        <div class="hidden group-hover:block absolute left-0 w-48 bg-white shadow-lg py-2 rounded-md mt-1">
+                            <a href="student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Profile</a>
+                            <a href="character-education.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Character Education</a>
+                            <a href="activities.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Activities</a>
+                            <a href="student-clubs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Clubs</a>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-700 font-medium hover:text-primary transition-colors">Community</a>
+                    <a href="#" class="bg-primary text-white rounded-md px-4 py-2 hover:bg-blue-600 transition-colors">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-primary font-medium rounded-md">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">About Us</a>
+                <a href="academics.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Admissions</a>
+                <a href="student-life.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Life</a>
+                <a href="community.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Community</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50 mt-4">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
+                 alt="Students in classroom" 
+                 class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 hero-gradient mix-blend-multiply"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                We Redesigned Education <br>For Your Child
+            </h1>
+            <p class="mt-6 max-w-3xl text-xl text-gray-100">
+                Stirling Schools provide the best education by bringing professional educators together and investing in educational technologies and facilities. We prepare students to understand, contribute to, and succeed in a rapidly changing world.
+            </p>
+            <div class="mt-10 flex flex-wrap gap-4">
+                <a href="about.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-accent hover:bg-yellow-500 transition-colors">
+                    Learn More About Us
+                </a>
+                <a href="admissions.html" class="inline-flex items-center justify-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-primary transition-colors">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base font-semibold text-accent uppercase tracking-wide">Our Approach</h2>
+                <p class="mt-2 text-3xl font-extrabold text-primary sm:text-4xl">Why Choose Stirling Schools</p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    We implement a coherent education model with a strong digital curriculum, supported by excellent teaching and the latest technology.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Card 1 -->
+                <div class="card flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mb-4">
+                                <i class="fas fa-globe-americas text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">International Standards</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                Our schools are accredited by UK-based quality assurance bodies and offer an internationally recognized Cambridge Curriculum Framework.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mb-4">
+                                <i class="fas fa-laptop text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">Digital Learning</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                We focus on the latest digital innovations and advanced technology to maximize content delivery and enhance student learning experiences.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mb-4">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">Character Development</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                Our goal is to develop independent, confident, respectful, and resilient individuals with strong ethical values and a deep-rooted sense of social responsibility.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mb-4">
+                                <i class="fas fa-language text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">English Education</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                English is the medium of instruction for core subjects, complemented by mother tongue education, preparing students for a global future.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="card flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mb-4">
+                                <i class="fas fa-medal text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">Extracurricular Excellence</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                We offer a rich variety of extracurricular activities to help students explore their potential, develop social skills, and build confidence.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="card flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mb-4">
+                                <i class="fas fa-school text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">Quality Facilities</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                Our schools feature modern facilities including 4K smartboards, science labs, computer labs, libraries, art rooms, and dedicated spaces for co-curricular activities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="about.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition-colors">
+                    Discover More About Our Approach
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Programs -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base font-semibold text-accent uppercase tracking-wide">Academic Excellence</h2>
+                <p class="mt-2 text-3xl font-extrabold text-primary sm:text-4xl">Our Educational Programs</p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Stirling Schools offers a comprehensive curriculum that prepares students at every level for future success.
+                </p>
+            </div>
+
+            <div class="grid gap-8 lg:grid-cols-2">
+                <!-- Program 1 -->
+                <div class="scroll-reveal flex flex-col rounded-lg shadow-lg overflow-hidden">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1622&q=80" alt="Kindergarten students">
+                    </div>
+                    <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-primary">Kindergarten Education</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                Our curriculum focuses on the development of academic, psychomotor, social, language, and self-care skills in our very young learners through engaging activities and play-based learning.
+                            </p>
+                            <div class="mt-4">
+                                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mr-2">
+                                    Ages 4-5
+                                </span>
+                                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    Play-based learning
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-primary font-medium hover:text-accent transition-colors">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="scroll-reveal flex flex-col rounded-lg shadow-lg overflow-hidden">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Primary students">
+                    </div>
+                    <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-primary">Primary Education</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                In our primary school, pupils are encouraged to demonstrate their independence and are given a voice and choice in their learning with our experienced teachers establishing appropriate learning goals.
+                            </p>
+                            <div class="mt-4">
+                                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mr-2">
+                                    Grades 1-6
+                                </span>
+                                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    Cambridge Curriculum
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-primary font-medium hover:text-accent transition-colors">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="scroll-reveal flex flex-col rounded-lg shadow-lg overflow-hidden">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Secondary students">
+                    </div>
+                    <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-primary">Secondary Education</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                Our secondary school offers a rich and varied program of academic enrichment and leadership education that enhances students' academic progress and social development.
+                            </p>
+                            <div class="mt-4">
+                                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mr-2">
+                                    Grades 7-9
+                                </span>
+                                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    Cambridge Lower Secondary
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-primary font-medium hover:text-accent transition-colors">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="scroll-reveal flex flex-col rounded-lg shadow-lg overflow-hidden">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="High school students">
+                    </div>
+                    <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-primary">High School Education</h3>
+                            <p class="mt-3 text-base text-gray-500">
+                                We provide students with every opportunity to learn, explore, and acquire new skill sets, preparing them to succeed in the world's most prestigious universities through specialized exam preparation.
+                            </p>
+                            <div class="mt-4">
+                                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mr-2">
+                                    Grades 10-12
+                                </span>
+                                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    Wezari, SAT & AP Preparation
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="text-primary font-medium hover:text-accent transition-colors">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="academics.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition-colors">
+                    Explore Our Academic Programs
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Life -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-base font-semibold text-accent uppercase tracking-wide">Student Experience</h2>
+                    <p class="mt-2 text-3xl font-extrabold text-primary sm:text-4xl">Vibrant Student Life</p>
+                    <p class="mt-4 text-lg text-gray-500">
+                        At Stirling Schools, we offer a rich variety of co-curricular and extracurricular activities that help students explore their potential, develop social skills, build confidence, and create lifelong memories.
+                    </p>
+                    <div class="mt-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-3 text-gray-500">Academic competitions and olympiads</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-3 text-gray-500">Arts, music, and cultural festivals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-3 text-gray-500">Sports tournaments and physical activities</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-3 text-gray-500">Character development through values curriculum</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-3 text-gray-500">Student clubs catering to diverse interests</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-3 text-gray-500">Field trips and international summer camps</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition-colors">
+                            Discover Student Activities
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-10 lg:mt-0 scroll-reveal">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <img class="rounded-lg shadow-lg object-cover h-64 w-full" src="https://images.unsplash.com/photo-1544717305-996b815c338c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Students in science fair">
+                            <img class="rounded-lg shadow-lg object-cover h-64 w-full mt-4" src="https://images.unsplash.com/photo-1540479859555-17af45c78602?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Students in music class">
+                        </div>
+                        <div class="pt-6">
+                            <img class="rounded-lg shadow-lg object-cover h-64 w-full" src="https://images.unsplash.com/photo-1580894908361-967195033215?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Students playing sports">
+                            <img class="rounded-lg shadow-lg object-cover h-64 w-full mt-4" src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Students reading">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accreditations and Partners -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base font-semibold text-accent uppercase tracking-wide">Quality Assurance</h2>
+                <p class="mt-2 text-3xl font-extrabold text-primary sm:text-4xl">Our Accreditations & Partnerships</p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Stirling Schools are accredited by reputable international bodies and collaborate with world-class educational institutions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center items-center">
+                <div class="flex flex-col items-center">
+                    <div class="h-16 flex items-center justify-center">
+                        <i class="fas fa-award text-5xl text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-center text-sm font-semibold text-gray-700">City & Guilds Accreditation</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="h-16 flex items-center justify-center">
+                        <i class="fas fa-certificate text-5xl text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-center text-sm font-semibold text-gray-700">ISO 9001:2015 Certified</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="h-16 flex items-center justify-center">
+                        <i class="fas fa-university text-5xl text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-center text-sm font-semibold text-gray-700">Cambridge Educational Partnership</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="h-16 flex items-center justify-center">
+                        <i class="fas fa-language text-5xl text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-center text-sm font-semibold text-gray-700">TOEFL Exam Center</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base font-semibold text-accent uppercase tracking-wide">Testimonials</h2>
+                <p class="mt-2 text-3xl font-extrabold text-primary sm:text-4xl">What Our Community Says</p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Hear from our students, parents, and teachers about their experience with Stirling Schools.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-8 lg:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Ahmed H.</h4>
+                            <p class="text-sm text-gray-500">Parent</p>
+                        </div>
+                    </div>
+                    <div class="text-gray-600">
+                        <i class="fas fa-quote-left text-accent opacity-25 text-lg"></i>
+                        <p class="mt-2">
+                            "Stirling Schools has transformed my child's educational journey. The personalized attention, world-class curriculum, and focus on character development have helped them grow into a confident and capable young person."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Sarah M.</h4>
+                            <p class="text-sm text-gray-500">Student, Grade 11</p>
+                        </div>
+                    </div>
+                    <div class="text-gray-600">
+                        <i class="fas fa-quote-left text-accent opacity-25 text-lg"></i>
+                        <p class="mt-2">
+                            "I've been at Stirling Schools for six years, and I love the supportive environment and the amazing opportunities we get. The teachers are caring and knowledgeable, and I feel well-prepared for university."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Michael T.</h4>
+                            <p class="text-sm text-gray-500">Teacher</p>
+                        </div>
+                    </div>
+                    <div class="text-gray-600">
+                        <i class="fas fa-quote-left text-accent opacity-25 text-lg"></i>
+                        <p class="mt-2">
+                            "Teaching at Stirling Schools has been the most rewarding experience of my career. The technology-enhanced classrooms, professional development opportunities, and collaborative environment make it a great place to work."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                Ready to join the Stirling Schools family?
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-blue-100">
+                Schedule a visit to one of our campuses or apply online today.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="admissions.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition-colors">
+                    Apply Now
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-700 transition-colors">
+                    Schedule a Visit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">About</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="about.html" class="text-base text-gray-400 hover:text-white">Mission & Vision</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Our Schools</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Accreditations</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">UNESCO Action Plan</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Academics</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="academics.html" class="text-base text-gray-400 hover:text-white">Our Education Model</a>
+                        </li>
+                        <li>
+                            <a href="" class="text-base text-gray-400 hover:text-white">Curriculum</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">English Language Teaching</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Special Programs</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Student Life</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="character-education.html" class="text-base text-gray-400 hover:text-white">Character Education</a>
+                        </li>
+                        <li>
+                            <a href="activities.html" class="text-base text-gray-400 hover:text-white">Activities</a>
+                        </li>
+                        <li>
+                            <a href="student-clubs.html" class="text-base text-gray-400 hover:text-white">Student Clubs</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Stirling Schools Award</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Contact</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Find a School</a>
+                        </li>
+                        <li>
+                            <a href="admissions.html" class="text-base text-gray-400 hover:text-white">Admissions</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Careers</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="text-base text-gray-400 hover:text-white">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-base text-gray-400">
+                            &copy; 2023 Stirling Schools. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll reveal animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            
+            const revealOnScroll = function() {
+                for (let i = 0; i < scrollRevealElements.length; i++) {
+                    const elementTop = scrollRevealElements[i].getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        scrollRevealElements[i].classList.add('active');
+                    }
+                }
+            };
+            
+            window.addEventListener('scroll', revealOnScroll);
+            // Trigger once on load
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>
+
+

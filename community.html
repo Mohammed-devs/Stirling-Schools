@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Stirling Schools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004124', <!-- #1E40AF -->
+                        secondary: '#d7df23',
+                        accent: '#1a9c8f',
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        html { scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(30, 64, 175, 0.95)); }
+        .scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+        .community-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .community-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="font-sans text-dark bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="text-2xl font-bold text-primary">Stirling<span class="text-accent">Schools</span></div>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 font-medium hover:text-primary transition-colors">About Us</a>
+                    <a href="academics.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Academics</a>
+                    <a href="admissions.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Admissions</a>
+                    <div class="relative group">
+                        <a href="student-life.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Student Life</a>
+                        <div class="hidden group-hover:block absolute left-0 w-48 bg-white shadow-lg py-2 rounded-md mt-1 z-50">
+                            <a href="student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Profile</a>
+                            <a href="character-education.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Character Education</a>
+                            <a href="activities.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Activities</a>
+                            <a href="student-clubs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Clubs</a>
+                        </div>
+                    </div>
+                    <a href="community.html" class="text-primary font-medium hover:text-accent transition-colors">Community</a>
+                    <a href="contact.html" class="bg-primary text-white rounded-md px-4 py-2 hover:bg-blue-600 transition-colors">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">About Us</a>
+                <a href="academics.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Admissions</a>
+                <span class="block px-3 py-2 text-gray-500 font-medium text-sm">Student Life</span>
+                <a href="student-life.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Overview</a>
+                <a href="student-profile.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Profile</a>
+                <a href="character-education.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Character Education</a>
+                <a href="activities.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Activities</a>
+                <a href="student-clubs.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Clubs</a>
+                <a href="community.html" class="block px-3 py-2 text-primary font-medium rounded-md bg-blue-50">Community</a>
+                <a href="contact.html" class="block px-3 py-2 text-white bg-primary font-medium rounded-md hover:bg-blue-600 mt-2">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="relative bg-gray-900">
+        <div class="absolute inset-0">
+            <img src="https://source.unsplash.com/random/1600x900?community,gathering,school" alt="School Community" class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 hero-gradient mix-blend-multiply"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">Our Stirling Community</h1>
+            <p class="mt-6 max-w-3xl text-xl text-gray-100">Together, we create a supportive, engaging, and inclusive environment for all.</p>
+        </div>
+    </div>
+
+    <!-- Our Strong Community Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl font-bold text-primary">A Partnership for Success</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        The Stirling Schools community is a vibrant network of students, parents, teachers, staff, and alumni, all working together to foster a nurturing and dynamic educational experience. We believe that strong partnerships between home and school are essential for student success and well-being.
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        We actively encourage involvement and collaboration, creating a sense of belonging and shared purpose.
+                    </p>
+                </div>
+                <div class="mt-12 lg:mt-0 scroll-reveal">
+                    <img src="https://scontent.febl5-2.fna.fbcdn.net/v/t39.30808-6/486061654_1035521578597989_8485786911105498533_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=SGhGJ_9h-TgQ7kNvwFMyWCz&_nc_oc=AdklNgYPZIueg1homJmlh8AZ8M3wFy2_rgcP-uEuaE4cn7slXoinY-O4OZ6Tyv7XX2o&_nc_zt=23&_nc_ht=scontent.febl5-2.fna&_nc_gid=Lf3tJ5vR5R2KmgSlD4dd2A&oh=00_AfLM53BT-042qiNKGb4aZWJWd_PWEgTfA4UUQ86kO6wpmw&oe=6834AF50" alt="Parents and teachers collaborating" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Pillars -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary scroll-reveal">Facets of Our Community</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="community-card bg-white p-8 rounded-lg shadow-lg text-center scroll-reveal">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-users"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Parent Involvement</h3>
+                    <p class="text-gray-600">We value parents as partners in education. Opportunities include Parent-Teacher Associations (PTA), volunteering, workshops, and regular communication channels.</p>
+                </div>
+                <div class="community-card bg-white p-8 rounded-lg shadow-lg text-center scroll-reveal" style="transition-delay: 0.1s;">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Alumni Network</h3>
+                    <p class="text-gray-600">Our alumni remain connected to the Stirling family, offering mentorship, support, and inspiration to current students. We celebrate their achievements and contributions.</p>
+                </div>
+                <div class="community-card bg-white p-8 rounded-lg shadow-lg text-center scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-handshake"></i></div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Community Partnerships</h3>
+                    <p class="text-gray-600">We collaborate with local organizations, businesses, and institutions to enrich learning experiences and contribute positively to the wider community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Events & Gatherings Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary scroll-reveal">Events & Gatherings</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 scroll-reveal">Bringing our community together through memorable events.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="scroll-reveal">
+                    <img src="https://scontent.febl5-2.fna.fbcdn.net/v/t39.30808-6/483400360_630472899614219_8669944285957706388_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=-AhrHpX16fIQ7kNvwEtdXjs&_nc_oc=Adk6sk68-lW-_2BmMfAQplOM9u-CIaLoh18KzwNOS3h20ZvDsozGDV53VZ61xtI_i8w&_nc_zt=23&_nc_ht=scontent.febl5-2.fna&_nc_gid=EogqgYJO-MdxHYB6adzqJQ&oh=00_AfIdlAJ9GQGTT12U10Q685agRED4isrBGygFQyi-xUuC5g&oe=6834BC20" alt="School Fair" class="rounded-lg shadow-md object-cover w-full h-56 mb-4">
+                    <h3 class="text-lg font-semibold text-primary">School Fairs & Festivals</h3>
+                    <p class="text-gray-600 text-sm">Annual events celebrating our diverse culture, talents, and community spirit.</p>
+                </div>
+                <div class="scroll-reveal" style="transition-delay: 0.1s;">
+                    <img src="https://scontent.febl5-1.fna.fbcdn.net/v/t39.30808-6/491835988_1094028382740804_2679685992504671567_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=MDTKNvdVyYEQ7kNvwERJJkA&_nc_oc=AdmxpNCTqPDeV4WcqlG3WZqJdoG8Xvo51caIAqukJKOarhnN5e-18z0423GjoZuDjTE&_nc_zt=23&_nc_ht=scontent.febl5-1.fna&_nc_gid=F_Hmv_C2I_7m8NXWsXSBBw&oh=00_AfI7xZxxghBamEymi0LhtyXpcP7m7aeZfIhjIr5lNHHaaQ&oe=6834BD00" alt="Cultural Day" class="rounded-lg shadow-md object-cover w-full h-56 mb-4">
+                    <h3 class="text-lg font-semibold text-primary">Cultural Days</h3>
+                    <p class="text-gray-600 text-sm">Showcasing the rich heritage of our student body through performances, food, and exhibitions.</p>
+                </div>
+                <div class="scroll-reveal" style="transition-delay: 0.2s;">
+                    <img src="https://scontent.febl5-2.fna.fbcdn.net/v/t39.30808-6/487906823_1095668535908526_8096028992623181780_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NaWM54HoHnMQ7kNvwEdAD5s&_nc_oc=AdlD9U5MEewLeSs3a1eZc2sDlgOGXtGkr5hguGMMX8Gj_UjR2IXZjQxosvVyZlKbsQU&_nc_zt=23&_nc_ht=scontent.febl5-2.fna&_nc_gid=ndxG4LylLkwv73duUKv8Tw&oh=00_AfLtrVWQxbmoTLiiwpzWxDpN_5zn0CgWpGr34xjljrqTqA&oe=6834B50D" alt="Parent Workshop" class="rounded-lg shadow-md object-cover w-full h-56 mb-4">
+                    <h3 class="text-lg font-semibold text-primary">Parent Workshops & Seminars</h3>
+                    <p class="text-gray-600 text-sm">Informative sessions on educational topics, child development, and supporting learning at home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Our Community CTA -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold sm:text-4xl scroll-reveal">Be Part of Our Thriving Community</h2>
+            <p class="mt-4 text-xl text-blue-100 scroll-reveal">
+                Whether you are a prospective parent, a current family member, an alumnus, or a community partner, we invite you to connect with us and contribute to the vibrant life at Stirling Schools.
+            </p>
+            <div class="mt-8 scroll-reveal">
+                <a href="contact.html" class="inline-block bg-white text-primary font-medium py-3 px-6 rounded-lg shadow-md hover:bg-gray-100 transition-colors mr-4">
+                    Contact Us
+                </a>
+                <a href="admissions.html" class="inline-block bg-accent text-gray-800 font-medium py-3 px-6 rounded-lg shadow-md hover:bg-yellow-400 transition-colors">
+                    Learn About Admissions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">About</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="about.html#mission" class="text-base text-gray-400 hover:text-white">Mission & Vision</a></li>
+                        <li><a href="about.html#schools" class="text-base text-gray-400 hover:text-white">Our Schools</a></li>
+                        <li><a href="about.html#accreditations" class="text-base text-gray-400 hover:text-white">Accreditations</a></li>
+                        <li><a href="about.html#unesco" class="text-base text-gray-400 hover:text-white">UNESCO Action Plan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Academics</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="academics.html#education-model" class="text-base text-gray-400 hover:text-white">Our Education Model</a></li>
+                        <li><a href="academics.html#curriculum" class="text-base text-gray-400 hover:text-white">Curriculum</a></li>
+                        <li><a href="academics.html#english-language" class="text-base text-gray-400 hover:text-white">English Language Teaching</a></li>
+                        <li><a href="academics.html#special-programs" class="text-base text-gray-400 hover:text-white">Special Programs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Student Life</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="student-profile.html" class="text-base text-gray-400 hover:text-white">Student Profile</a></li>
+                        <li><a href="character-education.html" class="text-base text-gray-400 hover:text-white">Character Education</a></li>
+                        <li><a href="activities.html" class="text-base text-gray-400 hover:text-white">Activities</a></li>
+                        <li><a href="student-clubs.html" class="text-base text-gray-400 hover:text-white">Student Clubs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Connect</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="community.html" class="text-base text-white font-semibold">Community</a></li>
+                        <li><a href="admissions.html" class="text-base text-gray-400 hover:text-white">Admissions</a></li>
+                        <li><a href="contact.html#careers" class="text-base text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="contact.html" class="text-base text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div><p class="text-base text-gray-400 text-center md:text-left">&copy; 2024 Stirling Schools. All rights reserved.</p></div>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            const revealOnScroll = function() {
+                for (let i = 0; i < scrollRevealElements.length; i++) {
+                    const elementTop = scrollRevealElements[i].getBoundingClientRect().top;
+                    if (elementTop < window.innerHeight - 100) {
+                        scrollRevealElements[i].classList.add('active');
+                    }
+                }
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>
+

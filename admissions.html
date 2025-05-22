@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions - Stirling Schools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004124', <!-- #1E40AF -->
+                        secondary: '#d7df23',
+                        accent: '#1a9c8f',
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(30, 64, 175, 0.95));
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .step-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="text-2xl font-bold text-primary">Stirling<span class="text-accent">Schools</span></div>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 font-medium hover:text-primary transition-colors">About Us</a>
+                    <a href="academics.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Academics</a>
+                    <a href="admissions.html" class="text-primary font-medium hover:text-accent transition-colors">Admissions</a>
+                    <div class="relative group">
+                        <a href="student-life.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Student Life</a>
+                        <div class="hidden group-hover:block absolute left-0 w-48 bg-white shadow-lg py-2 rounded-md mt-1 z-50">
+                            <a href="student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Profile</a>
+                            <a href="character-education.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Character Education</a>
+                            <a href="activities.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Activities</a>
+                            <a href="student-clubs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Clubs</a>
+                        </div>
+                    </div>
+                    <a href="community.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Community</a>
+                    <a href="contact.html" class="bg-primary text-white rounded-md px-4 py-2 hover:bg-blue-600 transition-colors">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">About Us</a>
+                <a href="academics.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-primary font-medium rounded-md">Admissions</a>
+                
+                <span class="block px-3 py-2 text-gray-500 font-medium text-sm">Student Life</span>
+                <a href="student-life.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Overview</a>
+                <a href="student-profile.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Profile</a>
+                <a href="character-education.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Character Education</a>
+                <a href="activities.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Activities</a>
+                <a href="student-clubs.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Clubs</a>
+                
+                <a href="community.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Community</a>
+                <a href="contact.html" class="block px-3 py-2 text-white bg-primary font-medium rounded-md hover:bg-blue-600 mt-2">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="relative bg-gray-900">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
+                 alt="Students in classroom" 
+                 class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 hero-gradient mix-blend-multiply"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Admissions
+            </h1>
+            <p class="mt-6 max-w-3xl text-xl text-gray-100">
+                Ready to join the Stirling Schools family? Learn about our admission process and how to apply.
+            </p>
+            <div class="mt-10">
+                <a href="#applicationForm" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition-colors">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admission Process Overview -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Admission Process Overview</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    Joining Stirling Schools is a straightforward process designed to ensure the right fit for each student.
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <!-- Step 1 -->
+                    <div class="step-item bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mb-4">
+                            <span class="text-lg font-bold">1</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-primary">Submit Application</h3>
+                        <p class="mt-4 text-gray-600">
+                            Complete and submit the application form with required documents to our Admissions Office. Applications are accepted from April until the beginning of June.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-item bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mb-4">
+                            <span class="text-lg font-bold">2</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-primary">Assessment & Interview</h3>
+                        <p class="mt-4 text-gray-600">
+                            All students must undergo a level test and an individual interview as part of the admission process to assess academic ability, English language proficiency, and fit.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-item bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mb-4">
+                            <span class="text-lg font-bold">3</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-primary">Admission Decision</h3>
+                        <p class="mt-4 text-gray-600">
+                            After reviewing assessment results and previous school records, we will notify families of our admission decision as soon as possible.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-item bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mb-4">
+                            <span class="text-lg font-bold">4</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-primary">Enrollment & Payment</h3>
+                        <p class="mt-4 text-gray-600">
+                            Once accepted, families must pay the enrollment fee within one week and complete remaining payments by the specified dates to secure their child's place.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Criteria -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl font-bold text-primary">Admissions Criteria</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Our admissions committee reviews applications based on several key criteria to ensure students will thrive in our educational environment.
+                    </p>
+
+                    <div class="mt-8 space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-primary">
+                                    <i class="fas fa-birthday-cake"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Age</h3>
+                                <p class="mt-1 text-gray-600">Children reach compulsory school age at the beginning of the term following their 6th birthday. Any child whose birthday falls between 1st December and 31st January is eligible to apply in the previous scholastic year.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-primary">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Availability of Places</h3>
+                                <p class="mt-1 text-gray-600">We encourage parents to inform the school at an early stage of their wish to seek admission as there is a high demand for places that swiftly become unavailable.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-primary">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">English Language Proficiency</h3>
+                                <p class="mt-1 text-gray-600">Students' English language skills are assessed as part of the admission process. Those without adequate English may be offered a preparatory year.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-primary">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Previous School Record</h3>
+                                <p class="mt-1 text-gray-600">We review academic records from previous schools to assess a student's academic history and readiness for our program.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 lg:mt-0 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-primary">Enrollment Age Guide</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Standard Admission: A child with the appropriate age for the grade level before 1st September of that academic year is eligible for standard registration.
+                    </p>
+
+                    <div class="mt-8 bg-white rounded-lg shadow-lg overflow-hidden">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-primary">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                        Level
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                        Age
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        Kindergarten-1
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        4 years old
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        Kindergarten-2
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        5 years old
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        Grade 1
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        6 years old
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        Grade 2
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        7 years old
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        Grade 3
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        8 years old
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        Grade 4
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        9 years old
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        Grade 5
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        10 years old
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        Grade 6
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        11 years old
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="px-6 py-4 bg-gray-50">
+                            <p class="text-sm text-gray-500">Secondary and high school follow accordingly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Interview and Assessment -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Student interview" 
+                         class="rounded-lg shadow-lg">
+                </div>
+                <div class="mt-12 lg:mt-0 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-primary">Enrollment Interview and Assessment</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        All students must undergo a level test and an individual interview to be admitted. As a part of the application procedure, parents are informed about the school's education system.
+                    </p>
+                    
+                    <div class="mt-8 space-y-6">
+                        <div>
+                            <h3 class="text-lg font-medium text-primary">Application Review</h3>
+                            <p class="mt-2 text-gray-600">
+                                After receiving the completed application form, our admissions committee will review the application according to our admissions criteria, including availability of places, age, academic ability, English language proficiency, previous school record, behavior, and maturity of the candidate.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-medium text-primary">Assessment Process</h3>
+                            <p class="mt-2 text-gray-600">
+                                The level test assesses the student's academic abilities and knowledge, with a focus on core subjects. The individual interview helps us understand the student's personality, interests, and goals, while also allowing us to address any questions or concerns.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-medium text-primary">Notification and Enrollment</h3>
+                            <p class="mt-2 text-gray-600">
+                                After reviewing the assessment results and previous school records, the school will announce its final decision regarding admission. Families will be notified as soon as possible of the outcome, and if a place is offered, they must pay the enrollment fee within one week to secure it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Checklist -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Admission Checklist</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    This checklist will assist you in completing the application process in a timely and efficient way.
+                </p>
+            </div>
+
+            <div class="mt-12 max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="px-6 py-8">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm"></i>
+                            </div>
+                            <span class="ml-3 text-gray-700">Official copies of academic records from the previous school</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm"></i>
+                            </div>
+                            <span class="ml-3 text-gray-700">Duly completed application form</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm"></i>
+                            </div>
+                            <span class="ml-3 text-gray-700">A photocopy of the student's passport (if available)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm"></i>
+                            </div>
+                            <span class="ml-3 text-gray-700">A photocopy of the student's birth certificate to confirm date of birth</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm"></i>
+                            </div>
+                            <span class="ml-3 text-gray-700">Four identical passport-sized head-and-shoulders photographs in color</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm"></i>
+                            </div>
+                            <span class="ml-3 text-gray-700">A health report</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm"></i>
+                            </div>
+                            <span class="ml-3 text-gray-700">A guarantee letter from your company if they will be covering the cost of school enrollment fees and tuition fees</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 text-gray-600">
+                        <p>
+                            <strong>Note:</strong> The enrollment fee and other fees will need to be paid by the times specified in the application procedure. If you are making an application during term-time, all fees will need to be paid before the student can join the school.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SSAT Admission Test -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl font-bold text-primary">SSAT Admission Test</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        As Stirling Schools, we accept students for intake at certain levels. For grades 6 and 9, we have a standard school admission test, usually administered at the beginning of May.
+                    </p>
+                    
+                    <div class="mt-8 space-y-6">
+                        <div>
+                            <h3 class="text-lg font-medium text-primary">Test Format</h3>
+                            <p class="mt-2 text-gray-600">
+                                This test features Mathematics, Logic, Science, and English multiple-choice questions designed to assess a student's academic readiness for our program.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-medium text-primary">Scholarship Opportunities</h3>
+                            <p class="mt-2 text-gray-600">
+                                Depending on the result of the test, students may be offered scholarships to help cover the cost of their studies at Stirling Schools. High-performing students can receive significant financial assistance.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-medium text-primary">Preparatory Year</h3>
+                            <p class="mt-2 text-gray-600">
+                                Students who do not have an adequate level of English will be offered a preparatory year to develop their language skills before joining the regular program.
+                            </p>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition-colors">
+                                Learn More About SSAT
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Student taking a test" 
+                         class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section id="applicationForm" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Apply Online</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    Start your application process by completing the form below. Our admissions team will contact you with further instructions.
+                </p>
+            </div>
+
+            <div class="mt-12 max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+                <form>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-medium text-primary">Student Information</h3>
+                            <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                                    <select id="gender" name="gender" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                        <option value="">Select</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="grade" class="block text-sm font-medium text-gray-700">Grade Applying For</label>
+                                    <select id="grade" name="grade" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                        <option value="">Select</option>
+                                        <option value="kg1">Kindergarten 1</option>
+                                        <option value="kg2">Kindergarten 2</option>
+                                        <option value="g1">Grade 1</option>
+                                        <option value="g2">Grade 2</option>
+                                        <option value="g3">Grade 3</option>
+                                        <option value="g4">Grade 4</option>
+                                        <option value="g5">Grade 5</option>
+                                        <option value="g6">Grade 6</option>
+                                        <option value="g7">Grade 7</option>
+                                        <option value="g8">Grade 8</option>
+                                        <option value="g9">Grade 9</option>
+                                        <option value="g10">Grade 10</option>
+                                        <option value="g11">Grade 11</option>
+                                        <option value="g12">Grade 12</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="schoolType" class="block text-sm font-medium text-gray-700">School Type</label>
+                                    <select id="schoolType" name="schoolType" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                        <option value="">Select</option>
+                                        <option value="international">International School</option>
+                                        <option value="private">Private School</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-6">
+                            <h3 class="text-lg font-medium text-primary">Parent/Guardian Information</h3>
+                            <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+                                <div>
+                                    <label for="parentName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                    <input type="text" id="parentName" name="parentName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="relationship" class="block text-sm font-medium text-gray-700">Relationship to Student</label>
+                                    <select id="relationship" name="relationship" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                        <option value="">Select</option>
+                                        <option value="father">Father</option>
+                                        <option value="mother">Mother</option>
+                                        <option value="guardian">Legal Guardian</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-6">
+                            <h3 class="text-lg font-medium text-primary">Previous Education</h3>
+                            <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+                                <div class="sm:col-span-2">
+                                    <label for="prevSchool" class="block text-sm font-medium text-gray-700">Previous School Name</label>
+                                    <input type="text" id="prevSchool" name="prevSchool" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="prevGrade" class="block text-sm font-medium text-gray-700">Most Recent Grade Completed</label>
+                                    <select id="prevGrade" name="prevGrade" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                        <option value="">Select</option>
+                                        <option value="kg1">Kindergarten 1</option>
+                                        <option value="kg2">Kindergarten 2</option>
+                                        <option value="g1">Grade 1</option>
+                                        <option value="g2">Grade 2</option>
+                                        <option value="g3">Grade 3</option>
+                                        <option value="g4">Grade 4</option>
+                                        <option value="g5">Grade 5</option>
+                                        <option value="g6">Grade 6</option>
+                                        <option value="g7">Grade 7</option>
+                                        <option value="g8">Grade 8</option>
+                                        <option value="g9">Grade 9</option>
+                                        <option value="g10">Grade 10</option>
+                                        <option value="g11">Grade 11</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="englishLevel" class="block text-sm font-medium text-gray-700">English Proficiency Level</label>
+                                    <select id="englishLevel" name="englishLevel" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm">
+                                        <option value="">Select</option>
+                                        <option value="beginner">Beginner</option>
+                                        <option value="elementary">Elementary</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="fluent">Fluent</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-6">
+                            <h3 class="text-lg font-medium text-primary">Additional Information</h3>
+                            <div class="mt-4">
+                                <label for="comments" class="block text-sm font-medium text-gray-700">Comments or Questions</label>
+                                <textarea id="comments" name="comments" rows="3" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"></textarea>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <input id="terms" name="terms" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                    </div>
+                                    <div class="ml-3 text-sm">
+                                        <label for="terms" class="font-medium text-gray-700">I agree to the Stirling Schools admissions policies and procedures</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                Submit Application
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Frequently Asked Questions</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    Find answers to commonly asked questions about our admissions process.
+                </p>
+            </div>
+
+            <div class="mt-12 max-w-3xl mx-auto">
+                <div class="space-y-8">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="flex justify-between items-center w-full px-6 py-4 text-left" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-gray-900">When should I apply for admission?</span>
+                            <i class="fas fa-plus text-primary"></i>
+                        </button>
+                        <div class="hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                The admissions procedure runs from April until the beginning of June. Parents are encouraged to inform the school at an early stage of their wish to seek admission for the appropriate academic year as there is a high demand for places and these swiftly become unavailable.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="flex justify-between items-center w-full px-6 py-4 text-left" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-gray-900">What if my child doesn't speak English well?</span>
+                            <i class="fas fa-plus text-primary"></i>
+                        </button>
+                        <div class="hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                English language proficiency is one of our admissions criteria, but students who do not have an adequate level of English may be offered a preparatory year to develop their language skills before joining the regular program. We also provide ongoing English language support throughout the academic year.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="flex justify-between items-center w-full px-6 py-4 text-left" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-gray-900">What is the difference between International and Private schools?</span>
+                            <i class="fas fa-plus text-primary"></i>
+                        </button>
+                        <div class="hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                Our International Schools (in Erbil and Sulaymaniyah) use English as the medium of instruction across all subjects (except mother tongue languages), follow the Cambridge Curriculum, and primarily employ expatriate teachers. Our Private Schools use English for core subjects (English, Maths, Science, Computer) while other subjects are delivered in Arabic and Kurdish, and employ both expatriate and local teachers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="flex justify-between items-center w-full px-6 py-4 text-left" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-gray-900">Are scholarships available?</span>
+                            <i class="fas fa-plus text-primary"></i>
+                        </button>
+                        <div class="hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                Yes, we offer scholarships based on the results of the SSAT (Stirling Schools Admission Test) for grades 6 and 9. High-performing students may receive significant financial assistance. We also provide some scholarships with a higher percentage allocated to girls as part of our gender equality initiatives.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="flex justify-between items-center w-full px-6 py-4 text-left" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-gray-900">What documents are required for application?</span>
+                            <i class="fas fa-plus text-primary"></i>
+                        </button>
+                        <div class="hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                Required documents include official copies of academic records from the previous school, a completed application form, a photocopy of the student's passport (if available), a photocopy of the birth certificate, four passport-sized photographs, a health report, and if applicable, a guarantee letter from your company if they will cover school fees.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                Ready to join the Stirling Schools family?
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-blue-100">
+                Apply today or schedule a visit to one of our campuses to learn more.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#applicationForm" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition-colors">
+                    Apply Now
+                </a>
+                <a href="contact.html#visit" class="inline-flex items-center justify-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-700 transition-colors">
+                    Schedule a Visit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">About</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="about.html#mission" class="text-base text-gray-400 hover:text-white">Mission & Vision</a>
+                        </li>
+                        <li>
+                            <a href="about.html#schools" class="text-base text-gray-400 hover:text-white">Our Schools</a>
+                        </li>
+                        <li>
+                            <a href="about.html#accreditations" class="text-base text-gray-400 hover:text-white">Accreditations</a>
+                        </li>
+                         <li>
+                            <a href="about.html#unesco" class="text-base text-gray-400 hover:text-white">UNESCO Action Plan</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Academics</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="academics.html#education-model" class="text-base text-gray-400 hover:text-white">Our Education Model</a>
+                        </li>
+                        <li>
+                            <a href="academics.html#curriculum" class="text-base text-gray-400 hover:text-white">Curriculum</a>
+                        </li>
+                        <li>
+                            <a href="academics.html#english-language" class="text-base text-gray-400 hover:text-white">English Language Teaching</a>
+                        </li>
+                        <li>
+                            <a href="academics.html#special-programs" class="text-base text-gray-400 hover:text-white">Special Programs</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Student Life</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="student-profile.html" class="text-base text-gray-400 hover:text-white">Student Profile</a>
+                        </li>
+                        <li>
+                            <a href="character-education.html" class="text-base text-gray-400 hover:text-white">Character Education</a>
+                        </li>
+                        <li>
+                            <a href="activities.html" class="text-base text-gray-400 hover:text-white">Activities</a>
+                        </li>
+                        <li>
+                            <a href="student-clubs.html" class="text-base text-gray-400 hover:text-white">Student Clubs</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Connect</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="community.html" class="text-base text-gray-400 hover:text-white">Community</a>
+                        </li>
+                        <li>
+                            <a href="admissions.html" class="text-base text-gray-400 hover:text-white">Admissions</a>
+                        </li>
+                        <li>
+                            <a href="contact.html#careers" class="text-base text-gray-400 hover:text-white">Careers</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="text-base text-gray-400 hover:text-white">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div>
+                        <p class="text-base text-gray-400 text-center md:text-left">
+                            &copy; 2024 Stirling Schools. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ toggle function
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            content.classList.toggle('hidden');
+            
+            if (icon.classList.contains('fa-plus')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        }
+
+        // Scroll reveal animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            
+            const revealOnScroll = function() {
+                for (let i = 0; i < scrollRevealElements.length; i++) {
+                    const elementTop = scrollRevealElements[i].getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        scrollRevealElements[i].classList.add('active');
+                    } else { // Optional: hide if scrolled back up
+                        // scrollRevealElements[i].classList.remove('active');
+                    }
+                }
+            };
+            
+            window.addEventListener('scroll', revealOnScroll);
+            // Trigger once on load
+            revealOnScroll();
+        });
+
+        // Smooth scroll to application form
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyNowLinks = document.querySelectorAll('a[href="#applicationForm"]');
+            
+            applyNowLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const applicationForm = document.getElementById('applicationForm');
+                    if (applicationForm) {
+                        const offsetTop = applicationForm.offsetTop - 70; // Adjust for sticky nav
+                        
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities - Stirling Schools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004124', <!-- #1E40AF -->
+                        secondary: '#d7df23',
+                        accent: '#1a9c8f',
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        html { scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(30, 64, 175, 0.95)); }
+        .scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+        .activity-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .activity-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="font-sans text-dark bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="text-2xl font-bold text-primary">Stirling<span class="text-accent">Schools</span></div>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 font-medium hover:text-primary transition-colors">About Us</a>
+                    <a href="academics.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Academics</a>
+                    <a href="admissions.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Admissions</a>
+                    <div class="relative group">
+                        <a href="student-life.html" class="text-primary font-medium hover:text-accent transition-colors">Student Life</a>
+                        <div class="hidden group-hover:block absolute left-0 w-48 bg-white shadow-lg py-2 rounded-md mt-1 z-50">
+                            <a href="student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Profile</a>
+                            <a href="character-education.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Character Education</a>
+                            <a href="activities.html" class="block px-4 py-2 text-sm text-primary bg-blue-50">Activities</a>
+                            <a href="student-clubs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Clubs</a>
+                        </div>
+                    </div>
+                    <a href="community.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Community</a>
+                    <a href="contact.html" class="bg-primary text-white rounded-md px-4 py-2 hover:bg-blue-600 transition-colors">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">About Us</a>
+                <a href="academics.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Admissions</a>
+                <span class="block px-3 py-2 text-gray-500 font-medium text-sm">Student Life</span>
+                <a href="student-life.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Overview</a>
+                <a href="student-profile.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Profile</a>
+                <a href="character-education.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Character Education</a>
+                <a href="activities.html" class="block pl-6 pr-3 py-2 text-primary font-medium rounded-md bg-blue-50">Activities</a>
+                <a href="student-clubs.html" class="block pl-6 pr-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Clubs</a>
+                <a href="community.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Community</a>
+                <a href="contact.html" class="block px-3 py-2 text-white bg-primary font-medium rounded-md hover:bg-blue-600 mt-2">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="relative bg-gray-900">
+        <div class="absolute inset-0">
+            <img src="https://source.unsplash.com/random/1600x900?students,extracurricular" alt="Student Activities" class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 hero-gradient mix-blend-multiply"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">Extracurricular Activities</h1>
+            <p class="mt-6 max-w-3xl text-xl text-gray-100">Explore passions, develop talents, and build friendships beyond the classroom.</p>
+        </div>
+    </div>
+
+    <!-- Beyond the Classroom Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-primary scroll-reveal">Learning and Growth Beyond the Classroom</h2>
+            <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-600 scroll-reveal">
+                Stirling Schools offers a rich tapestry of extracurricular activities designed to complement academic learning. These programs provide students with opportunities to explore diverse interests, hone new skills, develop leadership qualities, and foster teamwork.
+            </p>
+        </div>
+    </section>
+
+    <!-- Categories of Activities Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary scroll-reveal">A World of Opportunities</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 scroll-reveal">We offer a diverse range of activities to cater to every student's passion.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Sports -->
+                <div class="activity-card bg-white p-6 rounded-lg shadow-lg scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-blue-100 text-primary mr-4"><i class="fas fa-futbol fa-2x"></i></div>
+                        <h3 class="text-2xl font-semibold text-primary">Sports & Athletics</h3>
+                    </div>
+                    <p class="text-gray-600 mb-3">From team sports like basketball and soccer to individual pursuits, our athletics program promotes physical fitness, discipline, and sportsmanship.</p>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Basketball Teams</li>
+                        <li>Soccer Leagues</li>
+                        <li>Volleyball</li>
+                        <li>Track & Field</li>
+                        <li>Swimming Club</li>
+                    </ul>
+                </div>
+                <!-- Arts & Culture -->
+                <div class="activity-card bg-white p-6 rounded-lg shadow-lg scroll-reveal" style="transition-delay: 0.1s;">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-blue-100 text-primary mr-4"><i class="fas fa-palette fa-2x"></i></div>
+                        <h3 class="text-2xl font-semibold text-primary">Arts & Culture</h3>
+                    </div>
+                    <p class="text-gray-600 mb-3">Unleash creativity through our diverse arts programs, including visual arts, drama, music, and cultural showcases.</p>
+                     <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Drama Club & Productions</li>
+                        <li>School Band & Choir</li>
+                        <li>Art & Craft Workshops</li>
+                        <li>Photography Club</li>
+                        <li>Cultural Exchange Programs</li>
+                    </ul>
+                </div>
+                <!-- Academic & STEM -->
+                <div class="activity-card bg-white p-6 rounded-lg shadow-lg scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-blue-100 text-primary mr-4"><i class="fas fa-flask fa-2x"></i></div>
+                        <h3 class="text-2xl font-semibold text-primary">Academic & STEM</h3>
+                    </div>
+                    <p class="text-gray-600 mb-3">Challenge yourself and expand your knowledge with academic competitions, STEM projects, and intellectual pursuits.</p>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Debate Team</li>
+                        <li>Math Olympiad</li>
+                        <li>Science Fair</li>
+                        <li>Robotics Club</li>
+                        <li>Coding Challenges</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Activities Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary scroll-reveal">Featured Activities</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 scroll-reveal">Highlighting some of our most popular and impactful programs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden scroll-reveal">
+                    <img src="https://source.unsplash.com/random/600x400?debate,students" alt="Debate Club in action" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-primary mb-2">Model United Nations (MUN)</h3>
+                        <p class="text-gray-600">Students develop skills in diplomacy, public speaking, and international relations by simulating UN committees and debating global issues.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden scroll-reveal" style="transition-delay: 0.1s;">
+                    <img src="https://source.unsplash.com/random/600x400?robotics,competition" alt="Robotics team" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-primary mb-2">Robotics & Coding Challenges</h3>
+                        <p class="text-gray-600">Hands-on experience in designing, building, and programming robots, participating in competitions and fostering innovation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Get Involved -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold sm:text-4xl scroll-reveal">Ready to Explore?</h2>
+            <p class="mt-4 text-xl text-blue-100 scroll-reveal">
+                Getting involved is easy! Information about activity sign-ups, schedules, and new offerings is regularly shared through school newsletters and student portals. We encourage all students to find an activity that sparks their interest.
+            </p>
+            <div class="mt-8 scroll-reveal">
+                <a href="student-clubs.html" class="inline-block bg-white text-primary font-medium py-3 px-6 rounded-lg shadow-md hover:bg-gray-100 transition-colors">
+                    Discover Student Clubs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">About</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="about.html#mission" class="text-base text-gray-400 hover:text-white">Mission & Vision</a></li>
+                        <li><a href="about.html#schools" class="text-base text-gray-400 hover:text-white">Our Schools</a></li>
+                        <li><a href="about.html#accreditations" class="text-base text-gray-400 hover:text-white">Accreditations</a></li>
+                        <li><a href="about.html#unesco" class="text-base text-gray-400 hover:text-white">UNESCO Action Plan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Academics</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="academics.html#education-model" class="text-base text-gray-400 hover:text-white">Our Education Model</a></li>
+                        <li><a href="academics.html#curriculum" class="text-base text-gray-400 hover:text-white">Curriculum</a></li>
+                        <li><a href="academics.html#english-language" class="text-base text-gray-400 hover:text-white">English Language Teaching</a></li>
+                        <li><a href="academics.html#special-programs" class="text-base text-gray-400 hover:text-white">Special Programs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Student Life</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="student-profile.html" class="text-base text-gray-400 hover:text-white">Student Profile</a></li>
+                        <li><a href="character-education.html" class="text-base text-gray-400 hover:text-white">Character Education</a></li>
+                        <li><a href="activities.html" class="text-base text-white font-semibold">Activities</a></li>
+                        <li><a href="student-clubs.html" class="text-base text-gray-400 hover:text-white">Student Clubs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Connect</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="community.html" class="text-base text-gray-400 hover:text-white">Community</a></li>
+                        <li><a href="admissions.html" class="text-base text-gray-400 hover:text-white">Admissions</a></li>
+                        <li><a href="contact.html#careers" class="text-base text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="contact.html" class="text-base text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div><p class="text-base text-gray-400 text-center md:text-left">&copy; 2024 Stirling Schools. All rights reserved.</p></div>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            const revealOnScroll = function() {
+                for (let i = 0; i < scrollRevealElements.length; i++) {
+                    const elementTop = scrollRevealElements[i].getBoundingClientRect().top;
+                    if (elementTop < window.innerHeight - 100) {
+                        scrollRevealElements[i].classList.add('active');
+                    }
+                }
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>
+

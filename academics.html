@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics - Stirling Schools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004124', <!-- #1E40AF -->
+                        secondary: '#d7df23',
+                        accent: '#1a9c8f',
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(30, 64, 175, 0.95));
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .model-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="text-2xl font-bold text-primary">Stirling<span class="text-accent">Schools</span></div>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 font-medium hover:text-primary transition-colors">About Us</a>
+                    <a href="academics.html" class="text-primary font-medium hover:text-accent transition-colors">Academics</a>
+                    <a href="admissions.html" class="text-gray-700 font-medium hover:text-primary transition-colors">Admissions</a>
+                    <div class="relative group">
+                        <a href="#" class="text-gray-700 font-medium hover:text-primary transition-colors">Student Life</a>
+                        <div class="hidden group-hover:block absolute left-0 w-48 bg-white shadow-lg py-2 rounded-md mt-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Character Education</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Activities</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Student Clubs</a>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-700 font-medium hover:text-primary transition-colors">Community</a>
+                    <a href="#" class="bg-primary text-white rounded-md px-4 py-2 hover:bg-blue-600 transition-colors">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">About Us</a>
+                <a href="academics.html" class="block px-3 py-2 text-primary font-medium rounded-md">Academics</a>
+                <a href="admissions.html" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Admissions</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Student Life</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50">Community</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-blue-50 mt-4">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="relative bg-gray-900">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" 
+                 alt="Students in classroom" 
+                 class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 hero-gradient mix-blend-multiply"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Academics
+            </h1>
+            <p class="mt-6 max-w-3xl text-xl text-gray-100">
+                Discover our educational philosophy, curriculum, programs, and technological integration designed to provide a comprehensive and engaging learning experience.
+            </p>
+        </div>
+    </div>
+
+    <!-- Our Education Model -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Our Education Model</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    Stirling Schools implements a unique education model that combines rich components, skills, and standards to raise engaged, reliable, and confident citizens of the global community.
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="scroll-reveal">
+                        <h3 class="text-2xl font-semibold text-primary">Stirling Schools Education Model (SEM ®)</h3>
+                        <p class="mt-4 text-lg text-gray-600">
+                            Stirling Schools has designed and implements a unique education model that combines rich components, skills, and standards to raise engaged, reliable, and confident citizens of the global community. We deliver quality education to help students develop into critical thinkers who are motivated to be independent, creative and entrepreneurial in their contributions to society.
+                        </p>
+                        <p class="mt-4 text-lg text-gray-600">
+                            We support our students' academic potential while simultaneously instilling authenticity, self-esteem and strong ethical values within every individual.
+                        </p>
+                    </div>
+                    <div class="scroll-reveal">
+                        <img src="https://images.unsplash.com/photo-1553544260-f87e88a7d758?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80" alt="Students working together" class="rounded-lg shadow-lg">
+                    </div>
+                </div>
+
+                <!-- SEM Core Components -->
+                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Competencies -->
+                    <div class="model-card bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-4">
+                            <i class="fas fa-brain text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary">Competencies</h3>
+                        <p class="mt-4 text-gray-600">
+                            We focus on developing essential competencies in our students, including Communication, Collaboration, Creativity, Critical Thinking, Citizenship, Character, and more. These are the skills that are essential for students to succeed in school, higher education, careers, and life.
+                        </p>
+                    </div>
+                    
+                    <!-- Coherent Education Framework -->
+                    <div class="model-card bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-4">
+                            <i class="fas fa-sitemap text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary">Coherent Education Framework</h3>
+                        <p class="mt-4 text-gray-600">
+                            We implement a coherent education model with a digital curriculum framework that is coherently sequenced, deliberately designed to facilitate learning, free of academic inconsistencies, and aligned across lessons, courses, subject areas, and grade levels.
+                        </p>
+                    </div>
+                    
+                    <!-- International Standards -->
+                    <div class="model-card bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-4">
+                            <i class="fas fa-globe text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary">International Standards</h3>
+                        <p class="mt-4 text-gray-600">
+                            Our educational standards meet international criteria including recognized student certificates, a multinational and multilingual student body, an accredited education program, international accreditation, multinational teacher population, English/bilingual instruction, and strong emphasis on extracurricular activities.
+                        </p>
+                    </div>
+                    
+                    <!-- Culturally Responsive Curriculum -->
+                    <div class="model-card bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-4">
+                            <i class="fas fa-book text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary">Culturally Responsive Curriculum</h3>
+                        <p class="mt-4 text-gray-600">
+                            Stirling Schools educational standards meet the requirements of local contexts, culture(s), and national assessments. We believe in mother tongue education as a fundamental element of the foundation of learning, while promoting civic competence and traditional values.
+                        </p>
+                    </div>
+                    
+                    <!-- Digitized Education -->
+                    <div class="model-card bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-4">
+                            <i class="fas fa-laptop text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary">Digitized Education</h3>
+                        <p class="mt-4 text-gray-600">
+                            Our education is supported with quality and rich resources including international books, digital and online resources, classroom technology such as smart boards, and various supportive resources to enhance the learning experience.
+                        </p>
+                    </div>
+                    
+                    <!-- Character Education -->
+                    <div class="model-card bg-white rounded-lg shadow-lg p-6">
+                        <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-4">
+                            <i class="fas fa-heart text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-primary">Character Education</h3>
+                        <p class="mt-4 text-gray-600">
+                            Stirling Schools believes in the importance of focusing on universal values which are essential to growing academically successful individuals with good character. Our motto is 'World Peace through Personal Peace', and we implement a comprehensive values curriculum.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- EEM Model -->
+                <div class="mt-16">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-semibold text-primary">Enriched Education Model (EEM ®)</h3>
+                        <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+                            As its motto, "Reimagining Education" suggests, Stirling Schools believes that education needs to be enriched in order to keep up with the ever-changing world. We integrate the Enriched Education Model into our dynamic educational services.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="md:flex">
+                            <div class="md:w-1/3 bg-primary p-8 flex items-center">
+                                <div class="text-white">
+                                    <h4 class="text-xl font-semibold">What is EEM ®?</h4>
+                                    <p class="mt-4">
+                                        Enriched Education Model is a general name for an educational program that:
+                                    </p>
+                                    <ul class="mt-4 space-y-2">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-accent mt-1"></i>
+                                            <span class="ml-2">Aims to help students explore their potential</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-accent mt-1"></i>
+                                            <span class="ml-2">Teaches how to learn, and promotes learner autonomy</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-accent mt-1"></i>
+                                            <span class="ml-2">Teaches while entertaining, and entertains while teaching</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-accent mt-1"></i>
+                                            <span class="ml-2">Enriches uniform education</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3 p-8">
+                                <h4 class="text-xl font-semibold text-primary">EEM ® Applies to 4 Fields</h4>
+                                <div class="mt-6 grid sm:grid-cols-2 gap-6">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 h-10 w-10 rounded-md bg-blue-100 flex items-center justify-center">
+                                            <i class="fas fa-paint-brush text-primary"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h5 class="text-lg font-medium text-gray-900">Enrichment in PE, Art, Music, and Computer Classes</h5>
+                                            <p class="mt-1 text-sm text-gray-600">Enhancing physical, artistic, musical, and technological education with creative approaches and activities.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 h-10 w-10 rounded-md bg-blue-100 flex items-center justify-center">
+                                            <i class="fas fa-futbol text-primary"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h5 class="text-lg font-medium text-gray-900">Enrichment with Extracurricular Courses</h5>
+                                            <p class="mt-1 text-sm text-gray-600">Providing additional learning opportunities beyond the standard curriculum to develop varied interests and skills.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 h-10 w-10 rounded-md bg-blue-100 flex items-center justify-center">
+                                            <i class="fas fa-heart text-primary"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h5 class="text-lg font-medium text-gray-900">Enrichment through Values Education</h5>
+                                            <p class="mt-1 text-sm text-gray-600">Implementing a comprehensive values curriculum to develop character and ethical foundations.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 h-10 w-10 rounded-md bg-blue-100 flex items-center justify-center">
+                                            <i class="fas fa-book text-primary"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h5 class="text-lg font-medium text-gray-900">Enrichment in Core Subjects</h5>
+                                            <p class="mt-1 text-sm text-gray-600">Enhancing the teaching of main academic subjects with innovative methods and resources.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Overview -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Curriculum Overview</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    The Stirling Schools curriculum provides positive support for students to achieve their goals by teaching them to take responsibility for their own learning.
+                </p>
+            </div>
+
+            <div class="mt-16 grid lg:grid-cols-3 gap-8">
+                <!-- Diversity -->
+                <div class="scroll-reveal bg-white rounded-lg shadow-lg p-8">
+                    <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary">Diversity</h3>
+                    <p class="mt-4 text-lg text-gray-600">
+                        We have designed our curriculum to fit a diverse learning environment in which students can discover their own individual capacities and interests.
+                    </p>
+                </div>
+                
+                <!-- Challenging -->
+                <div class="scroll-reveal bg-white rounded-lg shadow-lg p-8">
+                    <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-6">
+                        <i class="fas fa-medal text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary">Challenging</h3>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Our curriculum offers more than just the teaching of core subjects. It includes the teaching of a foreign language, activities and projects, national and international assessment possibilities, technology, robotics, brain games, and values teaching.
+                    </p>
+                </div>
+                
+                <!-- Dynamism -->
+                <div class="scroll-reveal bg-white rounded-lg shadow-lg p-8">
+                    <div class="h-12 w-12 rounded-md bg-primary text-white flex items-center justify-center mb-6">
+                        <i class="fas fa-sync-alt text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary">Dynamism</h3>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Our curriculum is a dynamic program which is reviewed and updated annually for each section on our Curriculum Development Day, an event which is organized with the participation of our Heads of Department and educational experts, and where feedback from students' surveys is also included.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 scroll-reveal">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <p class="text-lg text-gray-600">
+                        Stirling Schools offer their students international educational traditions, as well as the benefits of access to the rich culture and heritage of Iraq and Kurdistan. We collaboratively develop and continue to implement rich curricula based on clear measurable learning goals. 
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        The curricula for the core subjects are aligned to the quality international standards within Cambridge Curriculum Framework for primary and secondary level; and American Common Core standards for high school level in international schools. Curriculum guides contain learning objectives that are aligned to the standards and teachers use them to plan their daily instruction in the classroom.
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        The curriculum is endorsed with rich and various online resources and materials in technologically equipped classrooms and laboratories. Stirling Schools offer a rigorous, well-balanced course of study. Educational materials used are selected for their viability in the international standards and adaptability to the local environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum by Level -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Curriculum by Level</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    Explore our curriculum structure for each educational level from Kindergarten through High School.
+                </p>
+            </div>
+
+            <div class="mt-8">
+                <div class="sm:hidden">
+                    <label for="levelSelect" class="sr-only">Select a level</label>
+                    <select id="levelSelect" class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-primary focus:outline-none focus:ring-primary">
+                        <option value="kg">Kindergarten</option>
+                        <option value="primary">Primary School (Key Stage 1 & 2)</option>
+                        <option value="secondary">Secondary & High School</option>
+                    </select>
+                </div>
+                <div class="hidden sm:block">
+                    <nav class="flex space-x-4 justify-center" aria-label="Tabs">
+                        <button id="tabKG" class="tab-button bg-primary text-white px-3 py-2 font-medium text-sm rounded-md">
+                            Kindergarten
+                        </button>
+                        <button id="tabPrimary" class="tab-button bg-white text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                            Primary School (Key Stage 1 & 2)
+                        </button>
+                        <button id="tabSecondary" class="tab-button bg-white text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                            Secondary & High School
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Tab contents -->
+            <div class="mt-8">
+                <!-- Kindergarten -->
+                <div id="contentKG" class="tab-content active">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="scroll-reveal">
+                            <h3 class="text-2xl font-semibold text-primary">Kindergarten Curriculum</h3>
+                            <p class="mt-4 text-lg text-gray-600">
+                                Our curriculum focus in Kindergarten includes attention to the development of academic, psychomotor, social, language and self-care skills in our very young learners.
+                            </p>
+                            
+                            <div class="mt-6 space-y-6">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <i class="fas fa-language text-primary"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-lg font-medium text-gray-900">English</h4>
+                                        <p class="mt-1 text-gray-600">
+                                            The medium of instruction is English, and we use the Cambridge Little Steps series for English, Numeracy, and Phonics teaching. We prepare our young learners for the Primary school stage with pronunciation improvement, alphabet teaching and sound teaching.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <i class="fas fa-flask text-primary"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-lg font-medium text-gray-900">Science</h4>
+                                        <p class="mt-1 text-gray-600">
+                                            We provide an educational environment in which students can research, explore, observe and conduct experiments under guidance. This approach helps very young learners develop curiosity and learn through discovery.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <i class="fas fa-calculator text-primary"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-lg font-medium text-gray-900">Numeracy</h4>
+                                        <p class="mt-1 text-gray-600">
+                                            We use activities, games, storytelling, matching tasks, group work, and flashcard techniques to teach numeracy in a concrete way, helping young learners acquire a sound understanding of basic mathematical concepts.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <i class="fas fa-heart text-primary"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-lg font-medium text-gray-900">Universal Values</h4>
+                                        <p class="mt-1 text-gray-600">
+                                            We include the teaching of universal values to build positive personality traits and good character. We help learners improve their behavior through drama and storytelling activities and follow their daily routine with a 'Behaviour Chart'.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <i class="fas fa-puzzle-piece text-primary"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-lg font-medium text-gray-900">Brain Games</h4>
+                                        <p class="mt-1 text-gray-600">
+                                            We use different sets of 'brain games' to help students enhance memory and strengthen their ability to focus, improving problem-solving, analytical thinking, concentration, and teamwork skills.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scroll-reveal">
+                            <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1440&q=80" alt="Kindergarten students" class="rounded-lg shadow-lg">
+                            
+                            <div class="mt-8">
+                                <h4 class="text-lg font-medium text-primary">Other Subjects</h4>
+                                <p class="mt-2 text-gray-600">
+                                    We offer other subjects to help very young learners develop their abilities in art, music, and sports in addition to their literacy, numeracy and science learning.
+                                </p>
+                                
+                                <div class="mt-4 grid grid-cols-3 gap-4">
+                                    <div class="bg-blue-50 rounded p-4 text-center">
+                                        <i class="fas fa-music text-2xl text-primary mb-2"></i>
+                                        <p class="font-medium">Music</p>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4 text-center">
+                                        <i class="fas fa-running text-2xl text-primary mb-2"></i>
+                                        <p class="font-medium">Physical Education</p>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4 text-center">
+                                        <i class="fas fa-palette text-2xl text-primary mb-2"></i>
+                                        <p class="font-medium">Art</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-8">
+                                    <h4 class="text-lg font-medium text-primary">Mother Tongue Education</h4>
+                                    <p class="mt-2 text-gray-600">
+                                        Mother tongue education is fundamental to the early ages curriculum, encouraging our learners to think, listen, and express their feelings and opinions naturally and accurately. We are proud that our learners become excellent speakers of their mother tongue as well as confident speakers of English.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Primary School -->
+                <div id="contentPrimary" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="scroll-reveal">
+                            <h3 class="text-2xl font-semibold text-primary">Primary School Curriculum</h3>
+                            <p class="mt-4 text-lg text-gray-600">
+                                Primary education at Stirling Schools is divided into Key Stage 1 (Grades 1-3) and Key Stage 2 (Grades 4-6), with a focus on developing foundational skills, independence, and a love for learning.
+                            </p>
+                            
+                            <div class="mt-6 space-y-6">
+                                <div>
+                                    <h4 class="text-lg font-medium text-primary">Key Stage 1 (Grades 1-3)</h4>
+                                    <p class="mt-2 text-gray-600">
+                                        In Grades 1, 2 and 3, pupils have their classroom and class teacher for the majority of their lessons. The class teacher develops a strong relationship with pupils and their families and acts as the main point of contact for home-school communications.
+                                    </p>
+                                    <p class="mt-2 text-gray-600">
+                                        We offer a rigorous educational program that promotes well-rounded development: learning with head, heart, and hands. Grade level teachers continue with a class from one year to the next, ideally from Grade 1 to Grade 3, forming a community that works through challenges and celebrations together.
+                                    </p>
+                                    <p class="mt-2 text-gray-600">
+                                        Literacy starts our day with a 15-minute reading session every morning. Our Numeracy lessons are designed with fun in mind, as we impart new concepts and show how these relate to the real world through game-based learning and technology.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="text-lg font-medium text-primary">Key Stage 2 (Grades 4-6)</h4>
+                                    <p class="mt-2 text-gray-600">
+                                        Pupils in grades 4, 5 and 6 are taught by specialist subject teachers, recognizing their growing independence and the higher challenge of learning. However, as primary age children who still need care and support, they also benefit from having a homeroom teacher responsible for their welfare.
+                                    </p>
+                                    <p class="mt-2 text-gray-600">
+                                        Our students are vibrant, enthusiastic individuals who are regarded as role models. We have established a positive community of learners accustomed to working collaboratively. Pupils are encouraged to demonstrate independence and are given a voice and choice in their learning.
+                                    </p>
+                                    <p class="mt-2 text-gray-600">
+                                        We organize many enjoyable activities including Spelling Bees, Handwriting competitions, Counting contests, Spring Festivals, Science festivals, Cultural festivals, and Educational field trips.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scroll-reveal">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1622&q=80" alt="Primary students" class="rounded-lg shadow-lg">
+                            
+                            <div class="mt-8">
+                                <h4 class="text-lg font-medium text-primary">Key Learning Areas</h4>
+                                
+                                <div class="mt-4 grid grid-cols-2 gap-4">
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-book-open text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">English Language & Literacy</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-calculator text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Mathematics</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-flask text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Science</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-globe text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Social Studies</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-laptop-code text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Information Technology</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-language text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Mother Tongue</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-puzzle-piece text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Brain Games</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-palette text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Art & Music</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-8">
+                                    <h4 class="text-lg font-medium text-primary">Information and Technology (IT) Classes</h4>
+                                    <p class="mt-2 text-gray-600">
+                                        Our IT courses cover Computational Thinking, Programming, and Data Representation. In primary school, pupils learn the basics of paint programs, Microsoft Office applications, and coding through Robotics. Our computer labs contain one computer assigned to each student for hands-on learning.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Secondary & High School -->
+                <div id="contentSecondary" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="scroll-reveal">
+                            <h3 class="text-2xl font-semibold text-primary">Secondary & High School Curriculum</h3>
+                            <p class="mt-4 text-lg text-gray-600">
+                                Stirling Schools offer a rich and varied program of academic enrichment and leadership education for secondary and high school students that genuinely enhances their academic progress and social development.
+                            </p>
+                            
+                            <div class="mt-6 space-y-4">
+                                <p class="text-gray-600">
+                                    We are determined to help each student fulfill their academic potential to the fullest and achieve individual well-being. All teachers believe in the concept of the 'growth mindset' - that intelligence, talent, knowledge, and ability can always be improved through active learning and regular practice.
+                                </p>
+                                
+                                <p class="text-gray-600">
+                                    Academic excellence and character development are our core educational aims. We provide students with every opportunity to learn, explore, and acquire new skill sets in a disciplined yet non-coercive learning atmosphere, preparing them to succeed in the world's most prestigious universities.
+                                </p>
+                                
+                                <div>
+                                    <h4 class="text-lg font-medium text-primary">Secondary School (Grades 7-9)</h4>
+                                    <p class="mt-2 text-gray-600">
+                                        Our secondary curriculum follows the Cambridge Lower Secondary framework, providing a strong foundation in core subjects while developing critical thinking and analytical skills. Students take Cambridge Secondary Checkpoint exams at the end of Grade 9, and the high performers take Cambridge Key and Preliminary exams.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="text-lg font-medium text-primary">High School (Grades 10-12)</h4>
+                                    <p class="mt-2 text-gray-600">
+                                        The high school curriculum prepares students for university and beyond through rigorous academic programs aligned with American Common Core standards in international schools. We offer specialized exam preparation for Wezari exams, SAT, and AP, along with college counseling services to support university admissions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scroll-reveal">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="High school students" class="rounded-lg shadow-lg">
+                            
+                            <div class="mt-8">
+                                <h4 class="text-lg font-medium text-primary">Key Areas of Study</h4>
+                                
+                                <div class="mt-4 grid grid-cols-2 gap-4">
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-book-open text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">English Language & Literature</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-square-root-alt text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Mathematics</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-atom text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Sciences (Biology, Chemistry, Physics)</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-globe-americas text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Social Sciences</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-laptop-code text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Computer Science</span>
+                                    </div>
+                                    <div class="bg-blue-50 rounded p-4">
+                                        <i class="fas fa-language text-xl text-primary mr-2"></i>
+                                        <span class="font-medium">Foreign Languages</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-8">
+                                    <h4 class="text-lg font-medium text-primary">Special Programs</h4>
+                                    <ul class="mt-2 space-y-2">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-accent mt-1"></i>
+                                            <span class="ml-2 text-gray-600">Wezari Exam Preparation for Grade 12 students</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-accent mt-1"></i>
+                                            <span class="ml-2 text-gray-600">SAT and AP programs for international university admissions</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-accent mt-1"></i>
+                                            <span class="ml-2 text-gray-600">TOEFL ITP exams for high school students</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-accent mt-1"></i>
+                                            <span class="ml-2 text-gray-600">College Admission Counselling services</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-accent mt-1"></i>
+                                            <span class="ml-2 text-gray-600">International Science Olympiads preparation</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- English Language Teaching -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">English Language Teaching</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    Our comprehensive English language program is aligned with international standards and supported by internationally recognized examinations.
+                </p>
+            </div>
+
+            <div class="mt-16 grid lg:grid-cols-2 gap-12 items-center">
+                <div class="scroll-reveal">
+                    <h3 class="text-2xl font-semibold text-primary">CEFR Alignment</h3>
+                    <p class="mt-4 text-lg text-gray-600">
+                        We base the English language teaching that we deliver on the Common European Framework of Reference for Languages (CEFR). We have determined the level of each grade based on the CEFR and set exit band targets for our students accordingly.
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        We aim to make sure that every student reaches the appropriate exit band level by the time they complete each grade. In addition to our internal assessment, we use Cambridge and TOEFL international examinations to assess students' English language proficiency.
+                    </p>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium text-primary">Stirling Schools English Language Proficiency Chart</h4>
+                        
+                        <div class="mt-4 bg-white rounded-lg shadow-md overflow-hidden">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-primary">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                            Level
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                            CEFR Level
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                            Proficiency
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            Kindergarten
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Pre A1
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Beginner
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            Primary Key Stage 1
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            A2
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Elementary
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            Primary Key Stage 2
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            B1
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Intermediate
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            Preparatory Program
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Pre B1
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Intermediate
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            Secondary Stage
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            B2+
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Upper Intermediate
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            High School Stage
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            C1
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Advanced
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-reveal space-y-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold text-primary">Cambridge Exams</h3>
+                        <div class="mt-4 space-y-4">
+                            <div>
+                                <h4 class="font-medium text-gray-900">Cambridge YLE</h4>
+                                <p class="mt-1 text-gray-600">
+                                    Cambridge English: Young Learners, also known as Young Learners English Tests, is a suite of English language examinations specially designed for children in primary schools. In Stirling Schools, students take these exams at the primary level.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium text-gray-900">Cambridge Key</h4>
+                                <p class="mt-1 text-gray-600">
+                                    Key for Schools (formerly KET for Schools), is an exam for school-age learners which helps prepare them for higher-level English language qualifications. At Stirling Schools, students take this exam at the end of the preparatory year program or in grade 7.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium text-gray-900">Cambridge Preliminary</h4>
+                                <p class="mt-1 text-gray-600">
+                                    Preliminary (formerly PET), is the English language exam that shows students have mastered the basics. At Stirling Schools, students take this exam at the end of grade 7 or in grade 10, as appropriate to their needs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold text-primary">TOEFL Exams</h3>
+                        <div class="mt-4 space-y-4">
+                            <div>
+                                <h4 class="font-medium text-gray-900">TOEFL Primary</h4>
+                                <p class="mt-1 text-gray-600">
+                                    The TOEFL Primary program offers tests for students ages 8+ to measure a range of skills. Each test offers reliable administration and scoring, with meaningful feedback to help young learners progress. The tests are offered at two levels of proficiency, Step 1 and Step 2.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium text-gray-900">TOEFL Junior</h4>
+                                <p class="mt-1 text-gray-600">
+                                    The TOEFL Junior® tests, intended for students ages 11+ in middle school and lower levels of high school, accurately measure students' communicative skills in English, helping to pinpoint strengths and challenges.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium text-gray-900">TOEFL ITP</h4>
+                                <p class="mt-1 text-gray-600">
+                                    The TOEFL ITP program provides a convenient, affordable and reliable method to evaluate students and curricula of English language programs. It is administered locally by institutions for defined purposes, such as providing internationally benchmarked achievement standards.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- E-Learning -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Online Education & E-Learning</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    Stirling Schools provide a comprehensive and secure e-learning platform as a support service, with fully functioning modules for students.
+                </p>
+            </div>
+
+            <div class="mt-16 grid lg:grid-cols-2 gap-12 items-center">
+                <div class="scroll-reveal">
+                    <h3 class="text-2xl font-semibold text-primary">Stirling E-School System Mercury</h3>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Our E-School System aims to improve the quality of education by making appropriate technology available and educating users about software and technology in schools, providing practical, hands-on solutions.
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Our School Management System continues to develop to meet the technological and software-related expectations of schools, teachers, parents, and students. The system allows users to meet all requirements related to school monitoring and management without external resources.
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Our software has a reliable infrastructure capable of serving millions of users with the highest level of security systems in place. The user-friendly interface design enables everyone to use the system confidently, with mobile applications on the Apple Store and Google Play providing easy access to all modules in multiple languages.
+                    </p>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium text-primary">Our online education model is based on 3 main principles:</h4>
+                        <div class="mt-4 grid grid-cols-3 gap-4 text-center">
+                            <div class="bg-blue-50 rounded-lg p-4">
+                                <h5 class="font-medium text-gray-900">01</h5>
+                                <p class="mt-2">Live Lessons</p>
+                            </div>
+                            <div class="bg-blue-50 rounded-lg p-4">
+                                <h5 class="font-medium text-gray-900">02</h5>
+                                <p class="mt-2">Recorded Lessons</p>
+                            </div>
+                            <div class="bg-blue-50 rounded-lg p-4">
+                                <h5 class="font-medium text-gray-900">03</h5>
+                                <p class="mt-2">Social Interaction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1610484826967-09c5720778c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-learning platform" class="rounded-lg shadow-lg">
+                    
+                    <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+                        <h4 class="text-lg font-medium text-primary">E-Learning Modules for Students</h4>
+                        <div class="mt-4 grid grid-cols-2 gap-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-video text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">Live Lessons</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Attend live lessons at predetermined times with reminder messages.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-play-circle text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">Recorded Lessons</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Video repetition, new topics, and individual studies.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-clipboard-check text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">Tests & Exams</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Secure exams with prior notification alerts.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-book text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">E-Book</h5>
+                                    <p class="mt-1 text-xs text-gray-500">View books on mobile phones, tablets and computers.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-comments text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">Communication</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Strong communication for successful school life.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-tasks text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">Homework</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Notification alerts when teachers set assignments.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-poll text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">Survey</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Feedback on key issues for better service.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-chart-line text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">My Grades</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Access to all test and exam results.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-gamepad text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">Fun Learning</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Age-appropriate cartoons, quizzes, and games.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-lightbulb text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="text-sm font-medium text-gray-900">I Have an Idea</h5>
+                                    <p class="mt-1 text-xs text-gray-500">Share ideas and projects with teachers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Programs -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-primary">Special Programs</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">
+                    We offer specialized programs to support our students in achieving their educational goals and preparing for their futures.
+                </p>
+            </div>
+
+            <div class="mt-16 grid lg:grid-cols-2 gap-12">
+                <!-- Wezari Exam Preparation -->
+                <div class="scroll-reveal bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Students taking exams" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-semibold text-white">Wezari Exam Preparation</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">
+                            Success in the Wezari exam is the outcome of our students' 12-year educational journey. Our most experienced teachers take Wezari Exam classes, and the guidance department supports students with advice on stress management and extra social activities to help them cope with this critical year.
+                        </p>
+                        <p class="mt-4 text-gray-600">
+                            Our preparation programs include:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-2 text-gray-600">Zero Mistake, B.A.L, and Doping programs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-2 text-gray-600">Regular mock exams to evaluate progress</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-2 text-gray-600">Question Banks prepared by experienced teachers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent mt-1"></i>
+                                <span class="ml-2 text-gray-600">Extra study sessions during holidays</span>
+                            </li>
+                        </ul>
+                        <p class="mt-4 text-gray-600">
+                            As a result of this detailed preparation, Stirling School students outperform others and are admitted to prestigious faculties including Medicine, Dentistry, Pharmacy, Engineering, and Education at national and international universities.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- International University Preparation -->
+                <div class="scroll-reveal bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="University campus" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-semibold text-white">International University Preparation</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div>
+                            <h4 class="text-lg font-medium text-primary">SAT Preparation</h4>
+                            <p class="mt-2 text-gray-600">
+                                The College Board Scholastic Aptitude Test (SAT) and SAT Subject Tests are officially recognized by Kurdistan and Iraqi Educational Authorities for International Schools. International school students can be admitted to local and international universities with their SAT results.
+                            </p>
+                            <p class="mt-2 text-gray-600">
+                                Our international schools provide a well-balanced curriculum that prepares students for these tests, with SAT Support programs delivered by experienced teachers. Students' progress is monitored carefully, and they regularly sit SAT and SAT Subject Mock Tests.
+                            </p>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="text-lg font-medium text-primary">AP Preparation</h4>
+                            <p class="mt-2 text-gray-600">
+                                Advanced Placement examinations (AP exams) are standardized exams designed to measure how well students have mastered the content and skills of a specific AP course. Some colleges and universities grant credits or advanced placement based on AP test scores.
+                            </p>
+                            <p class="mt-2 text-gray-600">
+                                Stirling international schools provide elective AP courses at grade 12. Students benefit from support programs delivered by experienced teachers, and their progress is monitored carefully with regular AP Mock Tests.
+                            </p>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="text-lg font-medium text-primary">College Admission Counselling</h4>
+                            <p class="mt-2 text-gray-600">
+                                Our College Admission Counsellor Service assists high school students, especially 12th-grade students, with academic planning and university admissions. Services include guidance on university preparation, information on admissions tests and scholarships, application support, and career planning.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                Ready to explore our programs further?
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-blue-100">
+                Contact our admissions office to learn more about our educational offerings.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="admissions.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition-colors">
+                    Apply Now
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-700 transition-colors">
+                    Contact Admissions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">About</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="about.html" class="text-base text-gray-400 hover:text-white">Mission & Vision</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Our Schools</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Accreditations</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">UNESCO Action Plan</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Academics</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="academics.html" class="text-base text-gray-400 hover:text-white">Our Education Model</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Curriculum</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">English Language Teaching</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Special Programs</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Student Life</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Character Education</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Activities</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Student Clubs</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Stirling Schools Award</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Contact</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Find a School</a>
+                        </li>
+                        <li>
+                            <a href="admissions.html" class="text-base text-gray-400 hover:text-white">Admissions</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Careers</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-base text-gray-400 hover:text-white">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-base text-gray-400">
+                            &copy; 2023 Stirling Schools. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tabs functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all tab buttons and content
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Add click event to each tab button
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-white');
+                        btn.classList.add('bg-white', 'text-gray-500', 'hover:text-gray-700');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.remove('bg-white', 'text-gray-500', 'hover:text-gray-700');
+                    this.classList.add('bg-primary', 'text-white');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show corresponding tab content
+                    const contentId = this.id.replace('tab', 'content');
+                    document.getElementById(contentId).classList.add('active');
+                });
+            });
+            
+            // Mobile select dropdown functionality
+            const levelSelect = document.getElementById('levelSelect');
+            if (levelSelect) {
+                levelSelect.addEventListener('change', function() {
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show selected content
+                    const selectedValue = this.value;
+                    document.getElementById('content' + selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1)).classList.add('active');
+                    
+                    // Update desktop tabs to match
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-white');
+                        btn.classList.add('bg-white', 'text-gray-500', 'hover:text-gray-700');
+                        
+                        if (btn.id === 'tab' + selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1)) {
+                            btn.classList.remove('bg-white', 'text-gray-500', 'hover:text-gray-700');
+                            btn.classList.add('bg-primary', 'text-white');
+                        }
+                    });
+                });
+            }
+        });
+
+        // Scroll reveal animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            
+            const revealOnScroll = function() {
+                for (let i = 0; i < scrollRevealElements.length; i++) {
+                    const elementTop = scrollRevealElements[i].getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        scrollRevealElements[i].classList.add('active');
+                    }
+                }
+            };
+            
+            window.addEventListener('scroll', revealOnScroll);
+            // Trigger once on load
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>
+
+
